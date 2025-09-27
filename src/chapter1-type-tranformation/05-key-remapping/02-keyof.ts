@@ -6,9 +6,10 @@ interface Attributes {
     age: number;
 }
 
-type AttributeKeys = keyof Attributes;
-const getAttr=(key: AttributeKeys)=> {}
-getAttr()
+// 1. keyof 확인용 코드
+//type AttributeKeys = keyof Attributes;
+//const getAttr=(key: AttributeKeys)=> {}
+// getAttr()
 
 
 type AttributeGetters = {

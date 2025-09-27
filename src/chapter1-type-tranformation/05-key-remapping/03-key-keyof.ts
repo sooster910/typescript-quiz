@@ -6,7 +6,7 @@ interface Attributes {
     age: number;
 }
 
-type AttributeGetters = unknown
+type AttributeGetters = {[K in keyof Attributes as `get${Capitalize<K>}`]: ()=> Attributes[K]}
 
 type tests = [
     Expect<
