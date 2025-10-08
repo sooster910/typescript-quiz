@@ -1,8 +1,14 @@
 import {Equal, Expect} from "../../helper";
 
-type CreateDataShape = {
-    data: unknown;
-    error: unknown;
+/**
+ * E 의 제약조건을 TypeError라고 지정해도 테스트가 통과하고, SyntaxError라고 지정해도 테스트가 통과한다.
+ * 왜그럴까?
+ */
+
+
+type CreateDataShape<D,E extends TypeError> = {
+    data: D;
+    error: E;
 };
 
 type tests = [

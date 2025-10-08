@@ -1,14 +1,15 @@
 import {Equal, Expect} from "../../helper";
 
-type CreateDataShape<TData, TError> = {
+type CreateDataShape<TData, TError=undefined> = {
     data: TData;
     error: TError;
 };
 
+
 type tests = [
     Expect<
         Equal<
-            CreateDataShape<string>,
+            CreateDataShape<string>, //타입 매개변수 생락이 가능하다
             {
                 data: string;
                 error: undefined;

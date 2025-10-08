@@ -1,6 +1,6 @@
 import {Equal, Expect} from "../../helper";
 
-const returnWhatIPassIn = (t: unknown) => {
+const returnWhatIPassIn = <T>(t:T ) => {
     return t;
 };
 
