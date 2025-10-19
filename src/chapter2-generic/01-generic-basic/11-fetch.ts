@@ -1,9 +1,8 @@
 import { expect, it } from "vitest";
 import {Equal, Expect} from "../../helper";
 
-const fetchData = async (url: string) => {
-    const data = await fetch(url).then((response) => response.json());
-    return data;
+const fetchData = async <Data>(url: string):Promise<Data> => {
+    return await fetch(url).then((response) => response.json());
 };
 
 it("Should fetch data from an API", async () => {
@@ -14,3 +13,4 @@ it("Should fetch data from an API", async () => {
 
     type tests = [Expect<Equal<typeof data, { name: string }>>];
 });
+
