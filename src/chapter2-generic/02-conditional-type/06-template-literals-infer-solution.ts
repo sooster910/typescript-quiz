@@ -10,10 +10,13 @@ type Names = [
 
 type GetSurname<T> = T extends `${infer First} ${infer Last}` ? Last : never;
 
+type Last = GetSurname<"Hyunsu Joo">
+
 type tests = [
     Expect<Equal<GetSurname<Names[0]>, "Pocock">>,
     Expect<Equal<GetSurname<Names[1]>, "Hendrix">>,
     Expect<Equal<GetSurname<Names[2]>, "Clapton">>,
     Expect<Equal<GetSurname<Names[3]>, "Mayer">>,
     Expect<Equal<GetSurname<Names[4]>, "King">>,
+    Expect<Equal<GetSurname<"Hyunsu Joo">, "Joo">>
 ];
