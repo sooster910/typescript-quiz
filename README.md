@@ -13,6 +13,7 @@
 ### Chapter 2.Generic
 
 ## [코드에 의도를 담아내기: TypeScript @ts-expect-error 침묵보단 터트림으로 ](./src/chapter2-generic/01-generic-basic/ts-ignore-and-expect-error.md)
+## [특정 키이름 패턴식별해 원하는 키:밸류 추출](./src/chapter2-generic/02-conditional-type/conditionalType.md)
 
 ## 📚 챕터 구성
 
