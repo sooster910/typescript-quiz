@@ -50,6 +50,7 @@ src/
 
 #### [코드에 의도를 담아내기: TypeScript @ts-expect-error 침묵보단 터트림으로 ](./src/chapter2-generic/01-generic-basic/ts-ignore-and-expect-error.md)
 #### [특정 키이름 패턴식별해 원하는 키:밸류 추출](./src/chapter2-generic/02-conditional-type/conditionalType.md)
+#### [filter는 타입까진 추론해주지 않는다. 어떻게 해야할까? ](src/chapter2-generic/02-conditional-type/test-filter-types.ts)
 #### [[WIP 작성중] infer 타입 그리고 사용되는 never 어떻게 이해할 것인가?](./src/chapter2-generic/02-conditional-type/infer-never.md)
 
 ## 🚀 시작하기
