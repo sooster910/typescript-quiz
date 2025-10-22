@@ -1,9 +1,29 @@
 import { expect, it, describe } from "vitest";
 import {Equal, Expect} from "../../helper";
 
-export const getHomePageFeatureFlags = (
-    config: unknown,
-    override: (flags: unknown) => unknown
+/**
+ * 복잡한 object의 타입 추론하기
+ * @param config
+ * @param override
+ */
+
+type EXAMPLE_CONFIG_TYPE<T> = {
+    apiEndpoint: string,
+    apiVersion: string,
+    apiKey: string,
+    rawConfig: {
+        featureFlags: {
+            homePage: T,
+            loginPage: {
+                showCaptcha: boolean,
+                showConfirmPassword: boolean,
+            },
+        },
+    },
+}
+export const getHomePageFeatureFlags = <T>(
+    config:EXAMPLE_CONFIG_TYPE<T>,
+    override: (flags: T) => T
 ) => {
     return override(config.rawConfig.featureFlags.homePage);
 };
@@ -58,3 +78,37 @@ describe("getHomePageFeatureFlags", () => {
         ];
     });
 });
+
+
+/**
+ * 타입 안전한 Feature Flag 관리
+ *
+ */
+
+type FeatureFlags = {
+    homePage: { showBanner: boolean; showLogout: boolean };
+    loginPage: { showCaptcha: boolean; showConfirmPassword: boolean };
+};
+
+type AppConfig = {
+    featureFlags: FeatureFlags;
+};
+
+const config: AppConfig = {
+    featureFlags: {
+        homePage: { showBanner: true, showLogout: false },
+        loginPage: { showCaptcha: false, showConfirmPassword: true },
+    },
+};
+
+
+type KeyofFeatureFlags = keyof AppConfig["featureFlags"]
+function modifyFeatureFlags<T extends  KeyofFeatureFlags>(key:T,override: (flags: FeatureFlags[T]) => FeatureFlags[T]){
+
+}
+
+modifyFeatureFlags("homePage", (flags) => ({
+    ...flags,
+    showBanner:true, // ✅ 자동 완성 + 타입 안전,
+    // showWrongKey: true ❌ 오류 발생
+}));
